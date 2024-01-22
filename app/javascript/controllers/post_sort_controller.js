@@ -4,6 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["select"];
   connect() {
+    console.log("selected")
     console.log("Hello, Stimulus!", this.element);
     console.log(this.selectTarget.value);
   }

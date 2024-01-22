@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
+  def index2 
+    @posts = Post.all
+    @my_var = "This is an instance variable IT WORKED"
+    flash[:my_var] = @my_var
+  end
+  
   # GET /posts or /posts.json
   def index
     @posts = case params[:sort_by]
