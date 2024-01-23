@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  def index4
+  def index
     @posts = if params[:search]
-      Post.where('name LIKE ?', "%#{params[:search]}%")
+      Post.where('title LIKE ?', "%#{params[:search]}%")
     else
       Post.all
     end
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
   
   # GET /posts or /posts.json
-  def index
+  def indexsort
     @posts = case params[:sort_by]
     when 'alphabetical'
       Post.order(title: :asc)

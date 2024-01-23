@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "posts#index"
   resources :posts
+  
   get 'index2' => 'posts#index2'
   get 'index3' => 'posts#index3'
   get 'index4' => 'posts#index4'

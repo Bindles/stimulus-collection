@@ -4,6 +4,12 @@
         <%= submit_tag 'Search', class: 'ml-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline' %>
       <% end %>
 
+    <div>
+      <%= form_tag(components_path, method: 'get', class: 'flex items-center') do %>
+        <%= text_field_tag :search, params[:search], placeholder: 'Search components', class: 'rounded bg-gray-800 text-white px-4 py-2 focus:outline-none focus:shadow-outline' %>
+        <%= submit_tag 'Search', class: 'ml-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline' %>
+      <% end %>
+
 
 # MISC L66
       <%= link_to "Inspect", inspectc_posts_path(post), remote: true, data: { toggle: "modal", target: "#inspectModal", turbo_frame: 'targ' }, class: 'text-blue-500 hover:text-blue-700 ml-2' %>
