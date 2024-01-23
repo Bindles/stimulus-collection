@@ -1,3 +1,4 @@
+//post_sort_controller (STIMULUS)
 import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="post-sort"

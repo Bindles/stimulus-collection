@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-5.times do |i|
-    Post.create(title: "Title #{i}", content: "Content #{i}", created_at: (Time.now - i.days))
-  end 
+# 5.times do |i|
+#     Post.create(title: "Title #{i}", content: "Content #{i}", created_at: (Time.now - i.days))
+#   end 
+
+6.times do
+  Post.create(title: Faker::Movie.title, content: Faker::Movie.quote, visible: [true, false].sample)
+end
   

@@ -1,6 +1,24 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
+  def index4
+    @posts = if params[:search]
+      Post.where('name LIKE ?', "%#{params[:search]}%")
+    else
+      Post.all
+    end
+  
+    if params[:sort_by].present? && params[:order].present?
+    @posts = @posts.order(params[:sort_by] => params[:order])
+    end
+  end
+
+  def index3
+    @posts = Post.all
+    #@posts = Post.where(visible: false).order("created_at")
+    #@posts = Post.where(content: "visible").order("created_at")
+  end
+
   def index2 
     @posts = Post.all
     @my_var = "This is an instance variable IT WORKED"
@@ -87,6 +105,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :visible)
     end
 end
