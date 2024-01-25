@@ -1,39 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  
-  def index6
-    if params[:query].present?
-      @pagy, @posts = pagy(Post.search_posts(params[:query]))
-    else
-      @pagy, @posts = pagy(Post)
-    end
-
-    respond_to do |format|
-      format.html
-      format.json {
-        render json: { entries: render_to_string(partial: 'posts', formats: [:html]), pagination: view_context.pagy_bootstrap_nav(@pagy) }
-      }
-    end
-  end
-
-
   def index
     @posts = if params[:search]
       Post.where('title LIKE ?', "%#{params[:search]}%")
     else
       Post.all
     end
-
+  
     if params[:sort_by].present? && params[:order].present?
-      @posts = @posts.order(params[:sort_by] => params[:order])
-    end
-
-    @visible_values = Post.pluck(:visible).uniq
-
-    if params[:visible].present?
-      selected_visible = params[:visible]
-      @posts = @posts.where(visible: selected_visible)
+    @posts = @posts.order(params[:sort_by] => params[:order])
     end
   end
 

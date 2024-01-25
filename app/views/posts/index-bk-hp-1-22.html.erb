@@ -1,14 +1,4 @@
-<%= form_tag posts_path, method: :get do %>
-  <%= select_tag :visible, options_for_select(@visible_values, params[:visible]), include_blank: true %>
-  <%= submit_tag "Filter by Visible" %>
-<% end %>
-
-
-<%#= link_to 'Previous', { page: @current_page - 1 } if @current_page > 1 %>
-<%#= link_to 'Next', { page: @current_page + 1 } if @current_page < @total_pages %>
-
-
-<%# views=>index.html %>
+app/views/posts/index4.html.erb<%# views=>index.html %>
 
 <!-- app/views/shared/_header.html.erb -->
 <header class="bg-black text-white py-2">
@@ -63,10 +53,9 @@
 <%# AUTO-ITERATE TO DISPLAY LINKS TO EACH COMPONENT ATTRIBUTE FOR SORTING | .EACH DO |attr_name|%>
 <% @posts.first.attributes.keys.each do |attr_name| %>
   <% unless @posts.all? { |c| c[attr_name].blank? } %>
-    <%= link_to attr_name.capitalize, posts_path(sort_by: attr_name, order: (params[:order] == 'asc' && params[:sort_by] == attr_name) ? 'desc' : 'asc'), class: 'text-blue-500 hover:text-blue-700', data: { controller: 'sorting', action: 'click->sorting#sortPosts', sort_by: attr_name, order: (params[:order] == 'asc' && params[:sort_by] == attr_name) ? 'desc' : 'asc' } %>
+    <%= link_to attr_name.capitalize, posts_path(sort_by: attr_name, order: (params[:order] == 'asc' && params[:sort_by] == attr_name) ? 'desc' : 'asc'), class: 'text-blue-500 hover:text-blue-700' %>
   <% end %>
 <% end %>
-
 
 
 
