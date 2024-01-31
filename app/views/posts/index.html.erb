@@ -2,7 +2,7 @@
   <%= select_tag :visible, options_for_select(@visible_values, params[:visible]), include_blank: true %>
   <%= submit_tag "Filter by Visible" %>
 <% end %>
-
+<button class="btn btn-primary">AAAA</button>
 
 <%#= link_to 'Previous', { page: @current_page - 1 } if @current_page > 1 %>
 <%#= link_to 'Next', { page: @current_page + 1 } if @current_page < @total_pages %>
@@ -45,7 +45,7 @@
 <% end %>
 
 <%#SORTING BY ATTRIBUTE LINKS | WRITE EACH%>
-<%= @posts.first.attributes.keys %>
+<%= @posts.first.attributes.keys     %>
 <% unless @posts.all? { |c| c[:title].blank? } %>
   <%= link_to 'title', posts_path(sort_by: 'title', order: (params[:order] == 'asc' && params[:sort_by] == 'title') ? 'desc' : 'asc'), class: 'text-blue-500 hover:text-blue-700' %>
 <% end %>
